@@ -17,25 +17,33 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 
-public class MainActivity extends AppCompatActivity  implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity  implements View.OnClickListener
+{
  private Button btnAdd;
     private ArrayList<Place> arrayList;
     private ArrayAdapter<Place> adapter;
     private ListView listView;
 
-    private Location location;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location);
         btnAdd =  findViewById(R.id.btnAddID);
         btnAdd.setOnClickListener(this);
-        arrayList = new ArrayList<>();
-        location = new Location("location");
-        Place place = new Place("location1",location,20,false,false);
-        arrayList.add(place);
 
-        adapter = new ArrayAdapter<Place>(this,android.R.layout.simple_list_item_1,arrayList);
+
+
+        Settings setting1=new Settings(20,false,"1234");
+        Settings setting2=new Settings(20,false,"1234");
+        Settings setting3=new Settings(20,false,"1234");
+        Settings setting4=new Settings(20,false,"1234");
+        arrayList = new ArrayList<>();
+        arrayList.add(new Place("location1",20,30,setting1));
+        arrayList.add(new Place("location2",20,30,setting2));
+        arrayList.add(new Place("location3",20,30,setting3));
+        arrayList.add(new Place("location4",20,30,setting4));
+
+        adapter = new PlaceAdapter(this, arrayList);
 
         listView = (ListView) findViewById(R.id.myListViewID);
         listView.setAdapter(adapter);
@@ -44,8 +52,9 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int index, long l)
             {
-                Intent t = new Intent(MainActivity.this,SettingActivity.class);
+                Intent t = new Intent(MainActivity.this,DisplaySetting.class);
                 t.putExtra("index",index);
+
                 startActivity(t);
                 //Toast.makeText(MainActivity.this, arrayList.get(index),Toast.LENGTH_LONG).show();
             }
@@ -67,7 +76,7 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
     public void onClick(View v) {
         if(v==btnAdd) {
 
-            Intent t = new Intent(MainActivity.this, MapActivity.class);
+            Intent t = new Intent(MainActivity.this, MapsActivity.class);
             startActivity(t);
         }
     }

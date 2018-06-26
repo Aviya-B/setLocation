@@ -58,7 +58,7 @@ public class LocationActivity extends AppCompatActivity  implements View.OnClick
     public void onClick(View v) {
         if(v==btnAdd) {
 
-            Intent t = new Intent(this, MapActivity.class);
+            Intent t = new Intent(this, MapsActivity.class);
             startActivity(t);
         }
     }

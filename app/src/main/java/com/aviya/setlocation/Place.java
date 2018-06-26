@@ -6,36 +6,26 @@ import android.location.Location;
 public class Place
 {
     private String name;
-    private Location location;
-    private double radius;
-    private boolean isSilent;
-    private String msg;
-    private boolean ifRecord;
+    private int lat,lng;
+    private Settings settings;
 
-    public Place(String name,Location location, double radius,boolean isSilent,boolean ifRecord){
+    public Place(String name,int lat, int lng,Settings settings){
         this.name= name;
-        this.location=location;
-        this.radius=radius;
-        this.isSilent=isSilent;
-        this.msg="message";
-        this.ifRecord=ifRecord;
+        this.lat = lat;
+        this.lng = lng;
+        this.settings=settings;
+        //this.ifRecord=ifRecord;
 }
 
-    public boolean isIfRecord() {
-        return ifRecord;
-    }
+//    public boolean isIfRecord() {
+//        return ifRecord;
+//    }
+//
+//    public void setIfRecord(boolean ifRecord) {
+//        this.ifRecord = ifRecord;
+//    }
 
-    public void setIfRecord(boolean ifRecord) {
-        this.ifRecord = ifRecord;
-    }
 
-    public String getMsg() {
-        return msg;
-    }
-
-    public void setMsg(String msg) {
-        this.msg = msg;
-    }
 
     public String getName() {
         return name;
@@ -45,27 +35,27 @@ public class Place
         this.name = name;
     }
 
-    public Location getLocation() {
-        return location;
+    public int getLat() {
+        return lat;
     }
 
-    public void setLocation(Location location) {
-        this.location = location;
+    public void setLat(int lat) {
+        this.lat = lat;
     }
 
-    public double getRadius() {
-        return radius;
+    public int getLng() {
+        return lng;
     }
 
-    public void setRadius(double radius) {
-        this.radius = radius;
+    public void setLng(int lng) {
+        this.lng = lng;
     }
 
-    public boolean isSilent() {
-        return isSilent;
+    public Settings getSettings() {
+        return settings;
     }
 
-    public void setSilent(boolean silent) {
-        isSilent = silent;
+    public void setSettings(Settings settings) {
+        this.settings = settings;
     }
 }
