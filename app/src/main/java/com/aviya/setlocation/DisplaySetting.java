@@ -46,7 +46,7 @@ public class DisplaySetting extends Activity {
         if(extras !=null) {
             int Value = extras.getInt("id");
 
-            if(Value>0){
+            if(Value>0) {
                 //means this is the view part not the add contact part.
                 Cursor rs = mydb.getData(Value);
                 id_To_Update = Value;
@@ -57,129 +57,9 @@ public class DisplaySetting extends Activity {
                 String isSilent = rs.getString(rs.getColumnIndex(DBHelper.SETTINGS_COLUMN_IS_SILENT));
                 String numForSMS = rs.getString(rs.getColumnIndex(DBHelper.SETTINGS_COLUMN_SMS));
 
-                if (!rs.isClosed())  {
+                if (!rs.isClosed()) {
                     rs.close();
                 }
-                Button b = (Button)findViewById(R.id.button1);
+                Button b = (Button) findViewById(R.id.button1);
                 b.setVisibility(View.INVISIBLE);
-
-                nam.setText((CharSequence)locationName);
-                nam.setFocusable(false);
-                nam.setClickable(false);
-
-                radiu.setText((CharSequence)radius);
-                radiu.setFocusable(false);
-                radiu.setClickable(false);
-
-                isSilen.setText((CharSequence)isSilent);
-                isSilen.setFocusable(false);
-                isSilen.setClickable(false);
-
-                sms.setText((CharSequence)numForSMS);
-                sms.setFocusable(false);
-                sms.setClickable(false);
-
-
-            }
-        }
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        Bundle extras = getIntent().getExtras();
-
-        if(extras !=null) {
-            int Value = extras.getInt("id");
-            if(Value>0){
-                getMenuInflater().inflate(R.menu.display_contact, menu);
-            } else{
-                getMenuInflater().inflate(R.menu.menu_main,menu);
-            }
-        }
-        return true;
-    }
-
-    public boolean onOptionsItemSelected(MenuItem item) {
-        super.onOptionsItemSelected(item);
-        switch(item.getItemId()) {
-            case R.id.Edit_Contact:
-                Button b = (Button)findViewById(R.id.button1);
-                b.setVisibility(View.VISIBLE);
-                nam.setEnabled(true);
-                nam.setFocusableInTouchMode(true);
-                nam.setClickable(true);
-
-                radiu.setEnabled(true);
-                radiu.setFocusableInTouchMode(true);
-                radiu.setClickable(true);
-
-                isSilen.setEnabled(true);
-                isSilen.setFocusableInTouchMode(true);
-                isSilen.setClickable(true);
-
-                sms.setEnabled(true);
-                sms.setFocusableInTouchMode(true);
-                sms.setClickable(true);
-
-                return true;
-            case R.id.Delete_Contact:
-
-                AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                builder.setMessage(R.string.deleteContact)
-                        .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                mydb.deleteContact(id_To_Update);
-                                Toast.makeText(getApplicationContext(), "Deleted Successfully",
-                                        Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(getApplicationContext(),MainActivity.class);
-                                startActivity(intent);
-                            }
-                        })
-                        .setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                // User cancelled the dialog
-                            }
-                        });
-
-                AlertDialog d = builder.create();
-                d.setTitle("Are you sure");
-                d.show();
-
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-
-        }
-    }
-
-    public void run(View view) {
-        Bundle extras = getIntent().getExtras();
-        if(extras !=null) {
-            int Value = extras.getInt("id");
-            if(Value>0){
-                if(mydb.updateContact( id_To_Update,nam.getText().toString(),
-                        Integer.parseInt(radiu.getText().toString()), Boolean.parseBoolean(isSilen.getText().toString()),
-                        Integer.parseInt(sms.getText().toString()))){
-                    Toast.makeText(getApplicationContext(), "Updated", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(getApplicationContext(),MainActivity.class);
-                    startActivity(intent);
-                } else{
-                    Toast.makeText(getApplicationContext(), "not Updated", Toast.LENGTH_SHORT).show();
-                }
-            } else{
-                if(mydb.insertContact(nam.getText().toString(),
-                        Integer.parseInt(radiu.getText().toString()), Boolean.parseBoolean(isSilen.getText().toString()),
-                        Integer.parseInt(sms.getText().toString()))){
-                    Toast.makeText(getApplicationContext(), "done",
-                            Toast.LENGTH_SHORT).show();
-                } else{
-                    Toast.makeText(getApplicationContext(), "not done",
-                            Toast.LENGTH_SHORT).show();
-                }
-                Intent intent = new Intent(getApplicationContext(),MainActivity.class);
-                startActivity(intent);
-            }
-        }
-    }
-}
+            }}}}

@@ -8,8 +8,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="370dp"
-        >
+        android:layout_height="370dp">
 
         <EditText
             android:id="@+id/editTextName"
@@ -38,7 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/editTextName"
             android:layout_alignParentLeft="true"
-            android:text="@string/locationName"
+            android:text="@string/name"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <Button
@@ -57,7 +56,7 @@
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/editTextEmail"
             android:layout_alignLeft="@+id/textView1"
-            android:text="@string/sms"
+            android:text="@string/email"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
@@ -66,7 +65,7 @@
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/editTextPhone"
             android:layout_alignLeft="@+id/textView1"
-            android:text="@string/radius"
+            android:text="@string/phone"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
@@ -75,7 +74,7 @@
             android:layout_height="wrap_content"
             android:layout_above="@+id/editTextEmail"
             android:layout_alignLeft="@+id/textView5"
-            android:text="@string/isSilent"
+            android:text="@string/street"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <EditText
